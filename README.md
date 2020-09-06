@@ -80,6 +80,30 @@ yarn add react-router-dom redux react-redux redux-thunk
 
 ### 2-2. Server: actix-web
 
+```shell
+mkdir server
+```
+
+`run.sh`
+```shell
+#!/usr/bin/env bash
+
+cd $(dirname "$0")
+cd server
+cargo run
+```
+`server/Cargo.toml`
+```
+[dependencies]
+actix-web = "2.0"
+actix-rt = "1.0"
+```
+
+API server runs at `localhost:5000`
+
+```shell
+sh ./run.sh
+```
 
 
 
