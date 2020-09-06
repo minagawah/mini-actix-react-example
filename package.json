@@ -1,0 +1,60 @@
+{
+  "name": "mini-actix-react-example",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Example of actix-web (with cookie auth) for server-side, React (Router + Redux) for client-side.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "repository": "https://github.com/minagawah/mini-actix-react-example.git",
+  "homepage": "/",
+  "keywords": [
+    "actix-web",
+    "react"
+  ],
+  "author": "Hiroki Minagawa <minagawa@tokyo800.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minagawah/mini-actix-react-example/issues"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.6",
+    "tailwindcss": "^1.8.3",
+    "twin.macro": "^1.8.1"
+  }
+}
