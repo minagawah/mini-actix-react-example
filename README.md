@@ -12,6 +12,13 @@ Example of aptix-web (with cookie auth) for server-side, React (Router + Redux) 
 <a id="what"></a>
 ## 2. What I Did
 
+Client: React
+- Auth Provider
+-
+
+Server: aptix-web
+- Runs at: 5000
+
 
 ### 2-1. Client: React (with Router + Redux)
 

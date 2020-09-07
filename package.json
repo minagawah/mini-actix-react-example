@@ -1,6 +1,6 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "description": "Example of actix-web (with cookie auth) for server-side, React (Router + Redux) for client-side.",
   "main": "index.js",
