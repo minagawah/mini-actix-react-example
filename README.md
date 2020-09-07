@@ -17,7 +17,8 @@ Client: React
 -
 
 Server: aptix-web
-- Runs at: 5000
+- http://127.0.0.1:5000/api/auth
+- Ex. `{ "id: "joe" "}`
 
 
 ### 2-1. Client: React (with Router + Redux)
@@ -74,15 +75,19 @@ Configuration files for Emotion + Tailwind CSS:
 `babel-plugin-macros.config.js`
 `src/tailwind.config.js`
 
+#### (f) Others
 
-#### (xxx) All Installed NPM Packages
+```shell
+yarn add axios
+```
+
+#### (x) Installed NPM Packages All
 
 ```shell
 yarn add --dev react-app-rewired customize-cra @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
 
-yarn add react-router-dom redux react-redux redux-thunk
+yarn add react-router-dom redux react-redux redux-thunk axios
 ```
-
 
 
 ### 2-2. Server: actix-web

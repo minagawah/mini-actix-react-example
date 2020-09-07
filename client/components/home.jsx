@@ -1,8 +1,6 @@
 import React from 'react';
 import tw from 'twin.macro';
 
-import logo from '../logo.svg';
-
 const homeStyle = tw`p-4`;
 
 export const Home = () => (

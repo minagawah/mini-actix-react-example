@@ -1,14 +1,8 @@
-const MOCK_USER = {
-  id: 9999,
-  name: 'joe',
-  age: 3,
-  gender: 'male',
-};
+import axios from 'axios';
 
-const mockAuth = () => new Promise(resolve => {
-  setTimeout(() => {
-    resolve(MOCK_USER);
-  }, 500);
-});
-
-export const authUser = mockAuth
+export const authUser = async entry => (
+  axios.post(
+    'http://localhost:5000/api/auth',
+    entry
+  )
+)

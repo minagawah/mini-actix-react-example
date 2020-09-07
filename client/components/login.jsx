@@ -18,7 +18,7 @@ export const Login = () => {
   const { login } = useAuth();
 
   const onClick = async () => {
-    const res = await authUser({ message: 'hello' });
+    const res = await authUser({ id: 'joe' });
     login(res);
     history.push(from.pathname);
   };
