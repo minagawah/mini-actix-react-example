@@ -3,9 +3,10 @@
 Example having 'actix-web' as API server and React for client.
 
 [1. About](#about)  
-[2. Running](#running)  
+[2. Running](#run-build)  
 [3. What I Did](#what)  
 [4. LICENSE](#license)  
+
 
 <a id="about"></a>
 ## 1. About
@@ -21,30 +22,42 @@ Source codes stored in `client` directory.
 `actix-web` sources are in `server` directory.
 
 
-<a id="running"></a>
-## 2. Running
+<a id="run-build"></a>
+## 2. Run Locally / Build
 
-Run the local API server:
-
-```shell
-sh ./run.sh
-```
-
-http://localhost:5000/
-
-Run the client app:
+**## Run Locally**  
+- `run ./server_run_local.sh`
+- `npx react-app-rewired start`
 ```shell
 yarn start
 ```
 
-http://localhost:3000/
+(`actix-web`) http://localhost:5000/
+(`react`) http://localhost:3000/
+
+
+**## BUild**  
+- `run ./server_build.sh`
+- `npx react-app-rewired build`
+```shell
+yarn build
+```
+
 
 
 <a id="what"></a>
 ## 3. What I Did
 
 
-### 3-1. Client: `react` (with Router + Redux)
+### 3-1. Client - `react`
+
+Has the following pages:
+- Home
+- Articles
+- About
+
+Everyone can access pages except for "Articles" page.  
+When you access "Articles" page, it checkes for a login.
 
 
 #### (a) CRA
@@ -80,7 +93,30 @@ yarn add redux react-redux redux-thunk
 yarn add react-router-dom
 ```
 
-#### (e) Emotion + Tailwind CSS
+#### (e) `src` -&gt; `client`
+
+I wanted CRA to lookup `client` instead of `src` for the source:
+
+`config-overrides.js`
+```js
+const path = require('path');
+const { override } = require('customize-cra');
+
+module.exports = {
+  paths: (paths, env) => {
+    paths.appIndexJs = path.resolve(__dirname, 'client/index.jsx');
+    paths.appSrc = path.resolve(__dirname, 'client');
+    return paths;
+  },
+  webpack: override(
+    ...
+    ...
+    Other overrides
+  ),
+}
+```
+
+#### (f) Emotion + Tailwind CSS
 
 - `@emotion/core`
 - `@emotion/styled` (this is optional)
@@ -98,22 +134,33 @@ Configuration files for Emotion + Tailwind CSS:
 `babel-plugin-macros.config.js`
 `src/tailwind.config.js`
 
-#### (f) Others
+
+#### (g) Others
+
+**## dev**
+- `concurrently`
+
+**## prod**
+- `axios`
 
 ```shell
+yarn add --dev concurrently
 yarn add axios
 ```
+
 
 #### (x) Installed NPM Packages All
 
 ```shell
-yarn add --dev react-app-rewired customize-cra @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
+yarn add --dev react-app-rewired customize-cra concurrently @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
 
 yarn add react-router-dom redux react-redux redux-thunk axios
 ```
 
 
-### 3-2. Server: `actix-web`
+### 3-2. Server - `actix-web`
+
+React app as a client sending requests to `localhost:5000/api/[WHATEVER_THE_ENDPOINTS]`.
 
 ```shell
 mkdir server

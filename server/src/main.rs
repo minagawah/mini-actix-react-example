@@ -6,12 +6,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Entry {
-    id: String,
+    login_id: String,
+    password: String,
 }
 
-async fn auth(entry: web::Json<Entry>) -> web::Json<Entry> {
-    web::Json(Entry {
-        id: entry.id.clone(),
+#[derive(Debug, Serialize, Deserialize)]
+struct User {
+    id: String,
+    name: String,
+}
+
+async fn auth(entry: web::Json<Entry>) -> web::Json<User> {
+    web::Json(User {
+        id: entry.login_id.clone(),
+        name: "Joe Evans".into(),
     })
 }
 

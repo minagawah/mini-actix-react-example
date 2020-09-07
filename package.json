@@ -5,8 +5,12 @@
   "description": "Example of actix-web (with cookie auth) for server-side, React (Router + Redux) for client-side.",
   "main": "index.js",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "dev:client": "react-app-rewired start",
+    "dev:server": "sh ./server_run_local.sh",
+    "start": "concurrently --kill-others-on-fail \"yarn dev:server\" \"yarn dev:client\"",
+    "build:client": "react-app-rewired build",
+    "build:server": "sh ./server_build.sh",
+    "build": "yarn build:server && yarn build:client",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
@@ -53,6 +57,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "concurrently": "^5.3.0",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.1.6",
     "tailwindcss": "^1.8.3",

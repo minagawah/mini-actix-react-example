@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import tw from 'twin.macro';
 
 import { useAuth } from '../hooks/auth_provider';
-import { authUser } from '../lib/api';
+import { auth as authUser } from '../lib/api/user';
 
 const loginStyle = tw`pl-4 pt-1`;
 const buttonStyle = tw`
@@ -18,7 +18,7 @@ export const Login = () => {
   const { login } = useAuth();
 
   const onClick = async () => {
-    const res = await authUser({ id: 'joe' });
+    const res = await authUser({ login_id: 'joe', password: '1234' });
     login(res);
     history.push(from.pathname);
   };
