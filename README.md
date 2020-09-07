@@ -1,27 +1,50 @@
 # mini-actix-react-example
 
-Example of aptix-web (with cookie auth) for server-side, React (Router + Redux) for client-side.
+Example having 'actix-web' as API server and React for client.
 
 [1. About](#about)  
-[2. What I Did](#what)  
-[3. LICENSE](#license)  
+[2. Running](#running)  
+[3. What I Did](#what)  
+[4. LICENSE](#license)  
 
 <a id="about"></a>
 ## 1. About
 
+`actix-web` listening at port `5000` and provides `/api/auth` as an endpoint.  
+React app on the client side sends request to login.  
+Nothing really... The endpoint is just returning a hard-coded JSON data back.
+
+React app was created with CRA.  
+Source codes stored in `client` directory.  
+(configured `config-overrides.js` to build from there)
+
+`actix-web` sources are in `server` directory.
+
+
+<a id="running"></a>
+## 2. Running
+
+Run the local API server:
+
+```shell
+sh ./run.sh
+```
+
+http://localhost:5000/
+
+Run the client app:
+```shell
+yarn start
+```
+
+http://localhost:3000/
+
+
 <a id="what"></a>
-## 2. What I Did
-
-Client: React
-- Auth Provider
--
-
-Server: aptix-web
-- http://127.0.0.1:5000/api/auth
-- Ex. `{ "id: "joe" "}`
+## 3. What I Did
 
 
-### 2-1. Client: React (with Router + Redux)
+### 3-1. Client: `react` (with Router + Redux)
 
 
 #### (a) CRA
@@ -90,7 +113,7 @@ yarn add react-router-dom redux react-redux redux-thunk axios
 ```
 
 
-### 2-2. Server: actix-web
+### 3-2. Server: `actix-web`
 
 ```shell
 mkdir server
@@ -109,12 +132,6 @@ cargo run
 [dependencies]
 actix-web = "2.0"
 actix-rt = "1.0"
-```
-
-API server runs at `localhost:5000`
-
-```shell
-sh ./run.sh
 ```
 
 
