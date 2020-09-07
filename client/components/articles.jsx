@@ -4,7 +4,6 @@ import tw, { css } from 'twin.macro';
 
 import {
   articleListSelector,
-  articleIdSelector,
   fetchArticleListDispatcher,
   setArticleId,
 } from '../ducks/modules/article';
@@ -12,9 +11,9 @@ import {
 const articleStyle = css`
   ${tw`mt-3 p-2 cursor-pointer`}
 `;
+
 export const Articles = () => {
   const list = useSelector(articleListSelector);
-  const articleId = useSelector(articleIdSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +22,8 @@ export const Articles = () => {
 
   return (
     <div id="articles" tw="p-4">
+      <h2>Articles</h2>
+
       {list && list.length && list.map(article => {
         const { id, title, body } = article;
         return (
@@ -37,4 +38,3 @@ export const Articles = () => {
     </div>
   );
 }
-

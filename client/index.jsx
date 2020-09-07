@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Provider as StoreProvider } from 'react-redux';
+import { AuthProvider } from './hooks/auth_provider';
 
 import { createStore } from './ducks';
 
@@ -11,11 +12,13 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  <StoreProvider store={store}>
+    <AuthProvider>
+      <Router>
+        <App />
+      </Router>
+    </AuthProvider>,
+  </StoreProvider>,
   document.getElementById('root')
 );
 
