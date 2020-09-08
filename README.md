@@ -19,9 +19,11 @@ The authentication is done at: http://localhost:5000/api/auth
 Once authenticated,
 the app retrieves a list of articles from: http://localhost:5000/api/articles
 
-It is not doing anything special...  
-Just illustrating how Rust written server app
-is integrated with a React app.
+Doing nothing special, really....
+
+I just try to illustrate how Rust written API server
+could be integrated with a React app.
+
 
 
 <a id="run-build"></a>
