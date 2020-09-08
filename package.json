@@ -1,8 +1,8 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
-  "description": "Example of actix-web (with cookie auth) for server-side, React (Router + Redux) for client-side.",
+  "description": "Example having Rust's actix-web as API server and React for client.",
   "main": "index.js",
   "scripts": {
     "dev:client": "react-app-rewired start",

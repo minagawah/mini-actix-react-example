@@ -1,3 +1,5 @@
+import { articles as fetchArticles } from '../../lib/api/article';
+
 export const MOUNT = 'article';
 
 const FETCH_ARTICLE_LIST = 'FETCH_ARTICLE_LIST';
@@ -8,17 +10,6 @@ const initialState = {
   articles: [],
   article_id: null,
 };
-
-const MOCK_ARTICLES = [
-  { id: 1, title: 'aaaa', body: 'aaaaaaaaaa' },
-  { id: 2, title: 'bbbb', body: 'bbbbbbbbbb' },
-];
-
-const mockFetchArticles = () => new Promise(resolve => {
-  setTimeout(() => {
-    resolve(MOCK_ARTICLES);
-  }, 500);
-});
 
 // --------------------------------------------------------
 // Selectors
@@ -66,12 +57,15 @@ export const setArticleId = id => {
 // Operations
 // --------------------------------------------------------
 
-export const fetchArticleListDispatcher = () => dispatch => {
-  return mockFetchArticles()
-    .then(res => {
-      dispatch({
-        type: SET_ARTICLE_LIST,
-        payload: res,
-      });
-    });
+export const fetchArticleListDispatcher = () => async dispatch => {
+  const articles = await fetchArticles();
+
+  articles.forEach((article, i) => {
+    console.log(`[ducks/article] [${i}]: ${JSON.stringify(article)}`);
+  });
+
+  dispatch({
+    type: SET_ARTICLE_LIST,
+    payload: articles,
+  });
 }

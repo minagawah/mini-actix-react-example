@@ -1,9 +1,9 @@
 # mini-actix-react-example
 
-Example having 'actix-web' as API server and React for client.
+Example having Rust's actix-web as API server and React for client.
 
 [1. About](#about)  
-[2. Running](#run-build)  
+[2. Run & Build](#run-build)  
 [3. What I Did](#what)  
 [4. LICENSE](#license)  
 
@@ -11,32 +11,41 @@ Example having 'actix-web' as API server and React for client.
 <a id="about"></a>
 ## 1. About
 
-`actix-web` listening at port `5000` and provides `/api/auth` as an endpoint.  
-React app on the client side sends request to login.  
-Nothing really... The endpoint is just returning a hard-coded JSON data back.
+We have `actix-web` (a popular web framework for Rust) running at port `5000` as an API server,
+and listens to client requests.  
+Assuming our React app runs elsewhere,
+as you attempt to access "Articles" page, it asks you for a login.
+The authentication is done at: http://localhost:5000/api/auth  
+Once authenticated,
+the app retrieves a list of articles from: http://localhost:5000/api/articles
 
-React app was created with CRA.  
-Source codes stored in `client` directory.  
-(configured `config-overrides.js` to build from there)
-
-`actix-web` sources are in `server` directory.
+It is not doing anything special...  
+Just illustrating how Rust written server app
+is integrated with a React app.
 
 
 <a id="run-build"></a>
-## 2. Run Locally / Build
+## 2. Run & Build
 
-**## Run Locally**  
-- `run ./server_run_local.sh`
-- `npx react-app-rewired start`
+**## Run (locally)**  
+
 ```shell
 yarn start
 ```
 
-(`actix-web`) http://localhost:5000/
-(`react`) http://localhost:3000/
+Which does:
+- `run ./server_run_local.sh`
+- `npx react-app-rewired start`
+
+API server using `actix-web` listening at:  
+http://localhost:5000/
+
+SPA using `react`:  
+http://localhost:3000/
 
 
-**## BUild**  
+
+**## Build**  
 - `run ./server_build.sh`
 - `npx react-app-rewired build`
 ```shell
