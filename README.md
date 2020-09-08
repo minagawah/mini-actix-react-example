@@ -27,13 +27,12 @@ is integrated with a React app.
 <a id="run-build"></a>
 ## 2. Run & Build
 
-**## Run (locally)**  
-
+**Run**  
 ```shell
 yarn start
 ```
 
-Which does:
+which basically does:
 - `run ./server_run_local.sh`
 - `npx react-app-rewired start`
 
@@ -45,7 +44,7 @@ http://localhost:3000/
 
 
 
-**## Build**  
+**Build**  
 - `run ./server_build.sh`
 - `npx react-app-rewired build`
 ```shell
@@ -69,13 +68,13 @@ Everyone can access pages except for "Articles" page.
 When you access "Articles" page, it checkes for a login.
 
 
-#### (a) CRA
+#### a. CRA
 
 ```shell
 yarn create react-app mini-actix-react-example
 ```
 
-#### (b) Override CRA
+#### b. Override CRA
 
 - `react-app-rewired`
 - `customize-cra`
@@ -84,7 +83,7 @@ yarn create react-app mini-actix-react-example
 yarn add --dev react-app-rewired customize-cra
 ```
 
-#### (c) Redux
+#### c. Redux
 
 - `redux`
 - `react-redux`
@@ -94,7 +93,7 @@ yarn add --dev react-app-rewired customize-cra
 yarn add redux react-redux redux-thunk
 ```
 
-#### (d) React Router
+#### d. React Router
 
 - `react-router-dom`
 
@@ -102,7 +101,7 @@ yarn add redux react-redux redux-thunk
 yarn add react-router-dom
 ```
 
-#### (e) `src` -&gt; `client`
+#### e. `src` -&gt; `client`
 
 I wanted CRA to lookup `client` instead of `src` for the source:
 
@@ -125,7 +124,7 @@ module.exports = {
 }
 ```
 
-#### (f) Emotion + Tailwind CSS
+#### f. Emotion + Tailwind CSS
 
 - `@emotion/core`
 - `@emotion/styled` (this is optional)
@@ -144,13 +143,13 @@ Configuration files for Emotion + Tailwind CSS:
 `src/tailwind.config.js`
 
 
-#### (g) Others
+#### g. Others
 
-**## dev**
-- `concurrently`
-
-**## prod**
+**# dependencies**
 - `axios`
+
+**# devDependencies**
+- `concurrently`
 
 ```shell
 yarn add --dev concurrently
