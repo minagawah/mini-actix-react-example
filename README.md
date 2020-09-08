@@ -1,6 +1,6 @@
 # mini-actix-react-example
 
-Example having Rust's actix-web as API server and React for client.
+A sample having Rust's `actix-web` as API server and `react` for client.
 
 [1. About](#about)  
 [2. Run & Build](#run-build)  
@@ -27,7 +27,7 @@ is integrated with a React app.
 <a id="run-build"></a>
 ## 2. Run & Build
 
-**Run**  
+### Run Locally
 ```shell
 yarn start
 ```
@@ -44,7 +44,7 @@ http://localhost:3000/
 
 
 
-**Build**  
+### Build
 - `run ./server_build.sh`
 - `npx react-app-rewired build`
 ```shell
@@ -57,7 +57,7 @@ yarn build
 ## 3. What I Did
 
 
-### 3-1. Client - `react`
+### 3-1. `react`
 
 Has the following pages:
 - Home
@@ -68,13 +68,13 @@ Everyone can access pages except for "Articles" page.
 When you access "Articles" page, it checkes for a login.
 
 
-#### a. CRA
+#### (a) CRA
 
 ```shell
 yarn create react-app mini-actix-react-example
 ```
 
-#### b. Override CRA
+#### (b) Override CRA
 
 - `react-app-rewired`
 - `customize-cra`
@@ -83,7 +83,7 @@ yarn create react-app mini-actix-react-example
 yarn add --dev react-app-rewired customize-cra
 ```
 
-#### c. Redux
+#### (c) Redux
 
 - `redux`
 - `react-redux`
@@ -93,7 +93,7 @@ yarn add --dev react-app-rewired customize-cra
 yarn add redux react-redux redux-thunk
 ```
 
-#### d. React Router
+#### (d) React Router
 
 - `react-router-dom`
 
@@ -101,7 +101,7 @@ yarn add redux react-redux redux-thunk
 yarn add react-router-dom
 ```
 
-#### e. `src` -&gt; `client`
+#### (e) `src` -&gt; `client`
 
 I wanted CRA to lookup `client` instead of `src` for the source:
 
@@ -124,7 +124,7 @@ module.exports = {
 }
 ```
 
-#### f. Emotion + Tailwind CSS
+#### (f) Emotion + Tailwind CSS
 
 - `@emotion/core`
 - `@emotion/styled` (this is optional)
@@ -143,12 +143,12 @@ Configuration files for Emotion + Tailwind CSS:
 `src/tailwind.config.js`
 
 
-#### g. Others
+#### (g) Others
 
-**# dependencies**
+##### # dependencies
 - `axios`
 
-**# devDependencies**
+##### # devDependencies
 - `concurrently`
 
 ```shell
@@ -157,7 +157,7 @@ yarn add axios
 ```
 
 
-#### (x) Installed NPM Packages All
+#### (x) All the installed NPM packages
 
 ```shell
 yarn add --dev react-app-rewired customize-cra concurrently @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
@@ -166,9 +166,9 @@ yarn add react-router-dom redux react-redux redux-thunk axios
 ```
 
 
-### 3-2. Server - `actix-web`
+### 3-2. `actix-web` (API server)
 
-React app as a client sending requests to `localhost:5000/api/[WHATEVER_THE_ENDPOINTS]`.
+React app as a client sending requests to `localhost:5000/api/{API_ENDPOINT_PATH}`.
 
 ```shell
 mkdir server
