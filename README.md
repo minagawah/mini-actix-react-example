@@ -181,13 +181,21 @@ mkdir server
 
 cd $(dirname "$0")
 cd server
-cargo run
+RUST_BACKTRACE=1 RUST_LOG=actix_web=debug cargo run
 ```
 `server/Cargo.toml`
 ```
 [dependencies]
 actix-web = "2.0"
 actix-rt = "1.0"
+actix-cors = "0.2.0"
+actix-identity = "0.2.1"
+actix-http = "1.0.1"
+chrono = "0.2.16"
+rand = "0.7.3"
+serde_json = "1.0.57"
+
+serde = { version = "1.0", features = ["derive"] }
 ```
 
 
