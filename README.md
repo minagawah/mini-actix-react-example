@@ -11,15 +11,13 @@ A sample having Rust's `actix-web` as API server and `react` for client.
 <a id="about"></a>
 ## 1. About
 
-We have `actix-web` (a popular web framework for Rust) running at port `5000` as an API server,
-and listens to client requests.  
-Assuming our React app runs elsewhere,
-as you attempt to access "Articles" page, it asks you for a login.
-The authentication is done at: http://localhost:5000/api/auth  
-Once authenticated,
-the app retrieves a list of articles from: http://localhost:5000/api/articles
+We have `actix-web` (a popular web framework for Rust) running at port `5000` as an API server, and listens to client requests.  
+Assuming our React app runs elsewhere, as you attempt to access "Articles" page, it asks you for a login.
+The auth is done at: http://localhost:5000/api/auth  
+Once authenticated, the app retrieves a list of articles from: http://localhost:5000/api/articles
 
-Doing nothing special, really....
+Doing nothing special, really....  
+It isn't even doing the actual auth, but it simply writes a cookie.
 
 I just try to illustrate how Rust written API server
 could be integrated with a React app.
@@ -35,7 +33,7 @@ yarn start
 ```
 
 which basically does:
-- `run ./server_run_local.sh`
+- `run ./run.sh`
 - `npx react-app-rewired start`
 
 API server using `actix-web` listening at:  
@@ -47,7 +45,7 @@ http://localhost:3000/
 
 
 ### Build
-- `run ./server_build.sh`
+- `run ./build.sh`
 - `npx react-app-rewired build`
 ```shell
 yarn build
@@ -149,13 +147,14 @@ Configuration files for Emotion + Tailwind CSS:
 
 ##### # dependencies
 - `axios`
+- `js-cookie`
 
 ##### # devDependencies
 - `concurrently`
 
 ```shell
+yarn add axios js-cookie
 yarn add --dev concurrently
-yarn add axios
 ```
 
 

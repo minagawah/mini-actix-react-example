@@ -1,6 +1,6 @@
 [package]
 name = "mini-actix-react-example"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Hiroki Minagawa <minagawa@tokyo800.jp>"]
 edition = "2018"
 
@@ -8,5 +8,9 @@ edition = "2018"
 actix-web = "2.0"
 actix-rt = "1.0"
 actix-cors = "0.2.0"
+actix-identity = "0.2.1"
+chrono = "0.2.16"
+rand = "0.7.3"
+serde_json = "1.0.57"
 
 serde = { version = "1.0", features = ["derive"] }

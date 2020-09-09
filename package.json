@@ -1,15 +1,15 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
-  "description": "Example having Rust's actix-web as API server and React for client.",
+  "description": "Rust's 'actix-web' as API server and React for client.",
   "main": "index.js",
   "scripts": {
     "dev:client": "react-app-rewired start",
-    "dev:server": "sh ./server_run_local.sh",
+    "dev:server": "sh ./run.sh",
     "start": "concurrently --kill-others-on-fail \"yarn dev:server\" \"yarn dev:client\"",
     "build:client": "react-app-rewired build",
-    "build:server": "sh ./server_build.sh",
+    "build:server": "sh ./build.sh",
     "build": "yarn build:server && yarn build:client",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
@@ -45,6 +45,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
+    "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

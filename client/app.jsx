@@ -14,6 +14,7 @@ import './styles.css';
 
 const ProtectedRoute = ({ component, ...props }) => {
   const { user } = useAuth();
+
   return (
     <Route
       {...props}
@@ -23,8 +24,8 @@ const ProtectedRoute = ({ component, ...props }) => {
             pathname: '/login',
             state: { from: location },
           }}
-        />
-      )}
+        />)
+      }
     />
   );
 };

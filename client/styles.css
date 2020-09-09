@@ -35,3 +35,9 @@ a, a:link, a:hover, a:active, a:visited {
         transform: rotate(360deg);
     }
 }
+
+code {
+    background-color: #f55;
+    color: #fff;
+    padding: 0px 4px;
+}

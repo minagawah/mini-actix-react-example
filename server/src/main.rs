@@ -1,23 +1,57 @@
+use actix_identity::{CookieIdentityPolicy, IdentityService};
 use actix_cors::Cors;
-use actix_web::{ middleware, http, web, App, HttpResponse, HttpServer };
+use actix_web::{ middleware, web, http, App, HttpResponse, HttpServer };
+use rand::Rng;
 
+mod lib;
 mod api;
+
+const COOKIE_NAME: &str = "nacho";
+const ALLOWED_ORIGIN: &str = "http://localhost:3000";
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
+    let private_key = rand::thread_rng().gen::<[u8; 32]>();
+
+    HttpServer::new(move || { // `move` to take the ownership of `private_key`
         App::new()
             .wrap(middleware::Logger::default())
             .wrap(
                 Cors::new()
-                    .allowed_origin("http://localhost:3000")
-                    .allowed_methods(vec!["GET", "POST"])
-                    .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
+                    .allowed_origin(ALLOWED_ORIGIN)
+                    .allowed_methods(vec!["GET", "POST", "DELETE"])
+                    .allowed_headers(vec![
+                        http::header::AUTHORIZATION,
+                        http::header::ACCEPT,
+                    ])
                     .allowed_header(http::header::CONTENT_TYPE)
                     .max_age(3600)
+                    .supports_credentials() // Allow the cookie auth.
                     .finish(),
             )
-            .configure(api::config)
+            .wrap(IdentityService::new(
+                CookieIdentityPolicy::new(&private_key)
+                    .name(COOKIE_NAME)
+                    .path("/")
+                    .max_age_time(chrono::Duration::minutes(5))
+                    .secure(false),
+            ))
+            .service(
+                web::scope("/api")
+                    .service(
+                        web::resource("/auth")
+                            .route(web::post().to(api::user::login))
+                            .route(web::delete().to(api::user::logout))
+                    )
+                    .service(
+                        web::scope("/article")
+                            .service(
+                                web::resource("/all")
+                                    .route(web::get().to(api::article::get_all))
+                            )
+                    )
+                    .route("/", web::get().to(|| HttpResponse::Ok().body("api")))
+            )
             .route("/", web::get().to(|| HttpResponse::Ok().body("/")))
     })
     .bind("127.0.0.1:5000")?

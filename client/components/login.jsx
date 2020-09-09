@@ -3,11 +3,10 @@ import { useHistory, useLocation } from 'react-router-dom';
 import tw from 'twin.macro';
 
 import { useAuth } from '../hooks/auth_provider';
-import { auth as authUser } from '../lib/api/user';
 
-const loginStyle = tw`pl-4 pt-1`;
+const loginStyle = tw`pt-1 pl-6`;
 const buttonStyle = tw`
-  bg-red-500 hover:bg-red-300 text-white font-bold py-2 px-4 rounded border-none
+  bg-red-500 hover:bg-red-300 text-white text-lg font-bold py-2 px-4 rounded border-none
 `;
 
 export const Login = () => {
@@ -18,15 +17,16 @@ export const Login = () => {
   const { login } = useAuth();
 
   const onClick = async () => {
-    const res = await authUser({ login_id: 'joe', password: '1234' });
-    login(res);
+    await login({ login_id: 'joe', password: '1234' });
     history.push(from.pathname);
   };
 
   return (
     <div id="login" css={loginStyle}>
-      <h2>Login</h2>
-      <button onClick={onClick} css={buttonStyle}>
+      <div tw="mt-6 text-lg">
+        Restricted to members only. Please login.
+      </div>
+      <button onClick={onClick} css={buttonStyle} tw="mt-4">
         Login
       </button>
     </div>

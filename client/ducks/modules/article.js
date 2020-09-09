@@ -59,11 +59,6 @@ export const setArticleId = id => {
 
 export const fetchArticleListDispatcher = () => async dispatch => {
   const articles = await fetchArticles();
-
-  articles.forEach((article, i) => {
-    console.log(`[ducks/article] [${i}]: ${JSON.stringify(article)}`);
-  });
-
   dispatch({
     type: SET_ARTICLE_LIST,
     payload: articles,
