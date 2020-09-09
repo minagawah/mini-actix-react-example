@@ -18,8 +18,9 @@ export const Articles = () => {
   const list = useSelector(articleListSelector);
   const dispatch = useDispatch();
 
-  const id = Cookies.get(COOKIE_NAME);
-  console.log(`[articles] ${COOKIE_NAME}: `, id);
+  useEffect(() => {
+    console.log(`[articles] ${COOKIE_NAME}: `, Cookies.get(COOKIE_NAME));
+  }, []);
 
   useEffect(() => {
     dispatch(fetchArticleListDispatcher());

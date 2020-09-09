@@ -1,6 +1,8 @@
 use actix_identity::{CookieIdentityPolicy, IdentityService};
 use actix_cors::Cors;
-use actix_web::{ middleware, web, http, App, HttpResponse, HttpServer };
+use actix_web::http::header;
+use actix_web::{ middleware, web, App, HttpResponse, HttpServer };
+use actix_http::cookie::SameSite;
 use rand::Rng;
 
 mod lib;
@@ -20,11 +22,8 @@ async fn main() -> std::io::Result<()> {
                 Cors::new()
                     .allowed_origin(ALLOWED_ORIGIN)
                     .allowed_methods(vec!["GET", "POST", "DELETE"])
-                    .allowed_headers(vec![
-                        http::header::AUTHORIZATION,
-                        http::header::ACCEPT,
-                    ])
-                    .allowed_header(http::header::CONTENT_TYPE)
+                    .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
+                    .allowed_header(header::CONTENT_TYPE)
                     .max_age(3600)
                     .supports_credentials() // Allow the cookie auth.
                     .finish(),
@@ -33,7 +32,8 @@ async fn main() -> std::io::Result<()> {
                 CookieIdentityPolicy::new(&private_key)
                     .name(COOKIE_NAME)
                     .path("/")
-                    .max_age_time(chrono::Duration::minutes(5))
+                    .max_age_time(chrono::Duration::minutes(10))
+                    .same_site(SameSite::Lax) // Just in case.
                     .secure(false),
             ))
             .service(
