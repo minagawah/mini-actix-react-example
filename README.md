@@ -69,7 +69,7 @@ Always handy to start a new React app using CRA.
 yarn create react-app mini-actix-react-example
 ```
 
-#### B. Override CRA
+#### 3-2. Override CRA
 
 Explains later as to why we need overrides.
 
@@ -80,7 +80,7 @@ Explains later as to why we need overrides.
 yarn add --dev react-app-rewired customize-cra
 ```
 
-### 3-2. Redux
+### 3-3. Redux
 
 For this time, only "articles" are managed in Redux state.  
 (auth is not managed with Redux, but with `/client/lib/api/user.js`)
@@ -93,7 +93,7 @@ For this time, only "articles" are managed in Redux state.
 yarn add redux react-redux redux-thunk
 ```
 
-### 3-3. React Router
+### 3-4. Routing (React Router)
 
 - `react-router-dom`
 
@@ -124,7 +124,7 @@ module.exports = {
 }
 ```
 
-### 3-4. Emotion & TailwindCSS
+### 3-5. Emotion & TailwindCSS
 
 - `@emotion/core`
 - `@emotion/styled` (this is optional)
@@ -143,7 +143,7 @@ Configuration files for Emotion + TailwindCSS:
 `src/tailwind.config.js`
 
 
-### 3-5. Installing some other NPM packages
+### 3-6. Installing some other NPM packages
 
 ##### # dependencies
 - `axios`
@@ -168,7 +168,7 @@ yarn add react-router-dom redux react-redux redux-thunk axios
 ```
 
 
-### 3-6. Basic `actix-web`
+### 3-7. Basic `actix-web` setups
 
 ```shell
 mkdir server
@@ -198,7 +198,7 @@ serde = { version = "1.0", features = ["derive"] }
 ```
 
 
-### 3-7. Handling Auth (Cookies, CORS, etc.)
+### 3-8. Handling Auth (Cookies, CORS, etc.)
 
 While the auth presented here is barely called "auth",
 it needs to read/write cookies neverthless,
@@ -211,7 +211,7 @@ and here are the ideas for the app to properly work:
 
 
 <a id="license"></a>
-## 3. License
+## 4. License
 
 Dual-licensed under either of the followings.  
 Choose at your option.
