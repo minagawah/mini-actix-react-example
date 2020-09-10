@@ -143,13 +143,15 @@ Configuration files for Emotion + TailwindCSS:
 `src/tailwind.config.js`
 
 
-### 3-6. Installing some other NPM packages
+### 3-6. Installing other NPM packages
 
-##### # dependencies
+Some of the other NPM packages installed:
+
+For "dependencies"
 - `axios`
 - `js-cookie`
 
-##### # devDependencies
+For "devDependencies"
 - `concurrently`
 
 ```shell
@@ -157,9 +159,8 @@ yarn add axios js-cookie
 yarn add --dev concurrently
 ```
 
-So, including 3 of the above,
-for the whole thing,
-it would look like this:
+So, including 3 of the extra packages above,
+as a whole, it would look like this:
 
 ```shell
 yarn add --dev react-app-rewired customize-cra concurrently @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
