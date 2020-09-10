@@ -12,8 +12,12 @@ code {
                  monospace;
 }
 
-a, a:link, a:hover, a:active, a:visited {
+a, a:link, a:visited {
     color: #0080ff;
+}
+
+a:hover, a:active {
+    color: #e53e3e;
 }
 
 .logo {

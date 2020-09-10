@@ -12,7 +12,9 @@ const headerStyle = css`
   ${tw`flex flex-row justify-start items-center text-white`}
 `;
 
-const linkStyle = tw`no-underline ml-4 text-white! hover:text-red-600!`;
+// "!" at the end is "!important" in Tailwind CSS.
+const linkStyle = tw`no-underline ml-4 text-white! hover:text-blue-400!`;
+
 const logoutStyle = css`${linkStyle} ${tw`cursor-pointer`}`;
 
 export const Header = () => {

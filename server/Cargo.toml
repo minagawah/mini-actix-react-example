@@ -1,6 +1,6 @@
 [package]
 name = "mini-actix-react-example"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["Hiroki Minagawa <minagawa@tokyo800.jp>"]
 edition = "2018"
 

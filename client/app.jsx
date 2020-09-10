@@ -14,7 +14,6 @@ import './styles.css';
 
 const ProtectedRoute = ({ component, ...props }) => {
   const { user } = useAuth();
-
   return (
     <Route
       {...props}
@@ -32,12 +31,6 @@ const ProtectedRoute = ({ component, ...props }) => {
 
 const appStyle = css`
   height: 100vh;
-  a {
-    color: #0080ff;
-    &:hover, &:visited, &:active {
-      color: #e53e3e;
-    }
-  }
   ${tw`text-gray-800`}
 `;
 

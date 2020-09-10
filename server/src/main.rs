@@ -33,7 +33,7 @@ async fn main() -> std::io::Result<()> {
                     .name(COOKIE_NAME)
                     .path("/")
                     .max_age_time(chrono::Duration::minutes(10))
-                    .same_site(SameSite::Lax) // Just in case.
+                    .same_site(SameSite::Lax) // `Lax` by default, but to be explicit. POST isn't allowed for cross-site, though.
                     .secure(false),
             ))
             .service(
