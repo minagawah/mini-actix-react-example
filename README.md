@@ -1,6 +1,6 @@
 # mini-actix-react-example
 
-A sample having Rust's `actix-web` as API server and `react` for client.
+A sample app having Rust's `actix-web` as API server and `react` for client.
 
 [1. About](#about)  
 [2. Run & Build](#run-build)  
@@ -11,16 +11,24 @@ A sample having Rust's `actix-web` as API server and `react` for client.
 <a id="about"></a>
 ## 1. About
 
-We have `actix-web` (a popular web framework for Rust) running at port `5000` as an API server, and listens to client requests.  
-Assuming our React app runs elsewhere, as you attempt to access "Articles" page, it asks you for a login.
-The auth is done at: http://localhost:5000/api/auth  
-Once authenticated, the app retrieves a list of articles from: http://localhost:5000/api/articles
+API server implemented with `actix-web` is running at port 5000.
+Assuming a React app hosted elsewhere,
+when user visit "Articles" page, it asks for a login.
+The client app sends an auth request to `/api/auth`,
+and once authenticated,
+then the user sees a list of artiles
+which is available at `/api/article/all`.
 
-Doing nothing special, really....  
-It isn't even doing the actual auth, but it simply writes a cookie.
+Available pages:
 
-I just try to illustrate how Rust written API server
-could be integrated with a React app.
+- Top
+- Articles
+- About
+- Login (no direct links)
+
+Nothing special, really...  
+The auth isn't even an actual auth, but it just writes a cookie.  
+Simply, I wanted to show how React app is integrated with `actix-web`.
 
 
 
@@ -28,25 +36,21 @@ could be integrated with a React app.
 ## 2. Run & Build
 
 ### Run Locally
+
 ```shell
 yarn start
 ```
 
-which basically does:
-- `run ./run.sh`
-- `npx react-app-rewired start`
-
-API server using `actix-web` listening at:  
+`actix-web` as API server:  
 http://localhost:5000/
 
-SPA using `react`:  
+`react` as client:
 http://localhost:3000/
 
 
 
 ### Build
-- `run ./build.sh`
-- `npx react-app-rewired build`
+
 ```shell
 yarn build
 ```
@@ -57,24 +61,17 @@ yarn build
 ## 3. What I Did
 
 
-### 3-1. `react`
+### 3-1. CRA
 
-Has the following pages:
-- Home
-- Articles
-- About
-
-Everyone can access pages except for "Articles" page.  
-When you access "Articles" page, it checkes for a login.
-
-
-#### (a) CRA
+Always handy to start a new React app using CRA.
 
 ```shell
 yarn create react-app mini-actix-react-example
 ```
 
-#### (b) Override CRA
+#### B. Override CRA
+
+Explains later as to why we need overrides.
 
 - `react-app-rewired`
 - `customize-cra`
@@ -83,7 +80,10 @@ yarn create react-app mini-actix-react-example
 yarn add --dev react-app-rewired customize-cra
 ```
 
-#### (c) Redux
+### 3-2. Redux
+
+For this time, only "articles" are managed in Redux state.  
+(auth is not managed with Redux, but with `/client/lib/api/user.js`)
 
 - `redux`
 - `react-redux`
@@ -93,7 +93,7 @@ yarn add --dev react-app-rewired customize-cra
 yarn add redux react-redux redux-thunk
 ```
 
-#### (d) React Router
+### 3-3. React Router
 
 - `react-router-dom`
 
@@ -101,7 +101,7 @@ yarn add redux react-redux redux-thunk
 yarn add react-router-dom
 ```
 
-#### (e) `src` -&gt; `client`
+##### `src` -&gt; `client`
 
 I wanted CRA to lookup `client` instead of `src` for the source:
 
@@ -124,7 +124,7 @@ module.exports = {
 }
 ```
 
-#### (f) Emotion + Tailwind CSS
+### 3-4. Emotion & TailwindCSS
 
 - `@emotion/core`
 - `@emotion/styled` (this is optional)
@@ -136,14 +136,14 @@ module.exports = {
 yarn add --dev @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
 ```
 
-Configuration files for Emotion + Tailwind CSS:
+Configuration files for Emotion + TailwindCSS:
 
 `config-overrides.js`
 `babel-plugin-macros.config.js`
 `src/tailwind.config.js`
 
 
-#### (g) Others
+### 3-5. Installing some other NPM packages
 
 ##### # dependencies
 - `axios`
@@ -157,8 +157,9 @@ yarn add axios js-cookie
 yarn add --dev concurrently
 ```
 
-
-#### (x) All the installed NPM packages
+So, including 3 of the above,
+for the whole thing,
+it would look like this:
 
 ```shell
 yarn add --dev react-app-rewired customize-cra concurrently @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
@@ -167,9 +168,7 @@ yarn add react-router-dom redux react-redux redux-thunk axios
 ```
 
 
-### 3-2. `actix-web` (API server)
-
-React app as a client sending requests to `localhost:5000/api/{API_ENDPOINT_PATH}`.
+### 3-6. Basic `actix-web`
 
 ```shell
 mkdir server
@@ -198,6 +197,17 @@ serde_json = "1.0.57"
 serde = { version = "1.0", features = ["derive"] }
 ```
 
+
+### 3-7. Handling Auth (Cookies, CORS, etc.)
+
+While the auth presented here is barely called "auth",
+it needs to read/write cookies neverthless,
+and here are the ideas for the app to properly work:
+
+- `actix_identity::IdentityService` writes a cookie upon authentication
+- `actix_identity::CookieIdentityPolicy` lets you configure the cookie policies
+- In order for the client app at `localhost:3000` to send auth request to API servers, you need CORS settings. For this, `actix_cors::Cors` lets you configure in details.
+- When sending a request from the client, you need `{ withCredentials: true }` option for `axios`.
 
 
 <a id="license"></a>

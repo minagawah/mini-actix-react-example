@@ -4,7 +4,7 @@ import tw, { css } from 'twin.macro';
 
 import { useAuth } from './hooks/auth_provider';
 
-import { Home } from './components/home';
+import { Top } from './components/top';
 import { Header } from './components/header';
 import { Articles } from './components/articles';
 import { About } from './components/about';
@@ -45,7 +45,7 @@ export const App = () => (
   <div css={appStyle}>
     <Header />
     <div id="container" css={css`height:100%`}>
-      <Route exact path='/' component={Home} />
+      <Route exact path='/' component={Top} />
       <ProtectedRoute path='/articles' component={Articles} />
       <Route path='/about' component={About} />
       <Route path='/login' component={Login} />

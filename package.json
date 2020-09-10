@@ -1,6 +1,6 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "description": "Rust's 'actix-web' as API server and React for client.",
   "main": "index.js",
