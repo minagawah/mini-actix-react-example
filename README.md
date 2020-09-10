@@ -138,9 +138,12 @@ yarn add --dev @emotion/core @emotion/styled @emotion/babel-preset-css-prop tail
 
 Configuration files for Emotion + TailwindCSS:
 
-`config-overrides.js`
-`babel-plugin-macros.config.js`
+`config-overrides.js`  
+`babel-plugin-macros.config.js`  
 `src/tailwind.config.js`
+
+If you are interested in details,
+[check out one of my other repositories](https://github.com/minagawah/map-supercluster-example#what).
 
 
 ### 3-6. Installing other NPM packages
