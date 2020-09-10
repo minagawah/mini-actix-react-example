@@ -142,9 +142,9 @@ Configuration files for Emotion + TailwindCSS:
 `babel-plugin-macros.config.js`  
 `src/tailwind.config.js`
 
-If you are interested in details,
-[check out detailed descriptions](https://github.com/minagawah/map-supercluster-example#2-6-emotion--tailwindcss)
-found in one of my other projects.
+If you are interested in details about configuring the files above,
+[it is found in one of my other repositories.](https://github.com/minagawah/map-supercluster-example#2-6-emotion--tailwindcss)
+
 
 
 ### 3-6. Installing other NPM packages
