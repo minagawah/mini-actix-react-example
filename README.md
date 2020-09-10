@@ -143,7 +143,8 @@ Configuration files for Emotion + TailwindCSS:
 `src/tailwind.config.js`
 
 If you are interested in details,
-[check out one of my other repositories](https://github.com/minagawah/map-supercluster-example#what).
+[check out detailed descriptions](https://github.com/minagawah/map-supercluster-example#2-6-emotion--tailwindcss)
+found in one of my other projects.
 
 
 ### 3-6. Installing other NPM packages
