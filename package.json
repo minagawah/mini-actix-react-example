@@ -1,16 +1,16 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
   "description": "Rust's 'actix-web' as API server and React for client.",
   "main": "index.js",
   "scripts": {
-    "dev:client": "react-app-rewired start",
-    "dev:server": "sh ./run.sh",
-    "start": "concurrently --kill-others-on-fail \"yarn dev:server\" \"yarn dev:client\"",
-    "build:client": "react-app-rewired build",
-    "build:server": "sh ./build.sh",
-    "build": "yarn build:server && yarn build:client",
+    "client:start": "react-app-rewired start",
+    "server:start": "make run",
+    "start": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:start\"",
+    "client:build": "react-app-rewired build",
+    "server:build": "make build",
+    "build": "concurrently \"yarn client:build\" \"yarn server:build\"",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },

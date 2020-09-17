@@ -12,11 +12,10 @@ A sample app having Rust's `actix-web` as API server and `react` for client.
 ## 1. About
 
 API server implemented with `actix-web` is running at port 5000.
-Assuming a React app hosted elsewhere,
+Assuming a React app hosted *elsewhere*,
 when user visit "Articles" page, it asks for a login.
 The client app sends an auth request to `/api/auth`,
-and once authenticated,
-then the user sees a list of artiles
+and once authenticated, then the user sees a list of artiles
 which is available at `/api/article/all`.
 
 Available pages:
