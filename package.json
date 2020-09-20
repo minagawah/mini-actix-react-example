@@ -1,10 +1,11 @@
 {
   "name": "mini-actix-react-example",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": false,
   "description": "Rust's 'actix-web' as API server and React for client.",
   "main": "index.js",
   "scripts": {
+    "pretty": "$npm_execpath prettier -w \"**/*.(js|jsx)\"",
     "client:start": "react-app-rewired start",
     "server:start": "make run",
     "start": "concurrently --kill-others-on-fail \"yarn client:start\" \"yarn server:start\"",
@@ -60,6 +61,7 @@
     "@emotion/styled": "^10.0.27",
     "concurrently": "^5.3.0",
     "customize-cra": "^1.0.0",
+    "prettier": "^2.1.2",
     "react-app-rewired": "^2.1.6",
     "tailwindcss": "^1.8.3",
     "twin.macro": "^1.8.1"

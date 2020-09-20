@@ -29,6 +29,18 @@ Nothing special, really...
 The auth isn't even an actual auth, but it just writes a cookie.  
 Simply, I wanted to show how React app is integrated with `actix-web`.
 
+### A Few Notes on Serving with the Same Server (using Docker)
+
+While this example assumes the client app being served in different server,
+I have another private project for which both are served in the same server.
+In case you are interested, here are the key features you need:
+- Ditch CRA, but configure Webpack config files your own.
+- Use Docker (I have some sample files in this repo for deploying Docker containers to Heroku)
+- Output the client bundles to `server/static/dist`.
+- Configure actix-web to statically serve `server/static`.
+- Do `COPY static` in your Dockerfile
+
+If you have troubles or questions, feel free to contact me.
 
 
 <a id="run-build"></a>
@@ -150,22 +162,23 @@ If you are interested in details about configuring above files,
 Some of the other NPM packages installed:
 
 For "dependencies"
-- `axios`
-- `js-cookie`
+- axios
+- js-cookie
 
 For "devDependencies"
-- `concurrently`
+- concurrently
+- prettier
 
 ```shell
 yarn add axios js-cookie
-yarn add --dev concurrently
+yarn add --dev concurrently prettier
 ```
 
 So, including 3 of the extra packages above,
 as a whole, it would look like this:
 
 ```shell
-yarn add --dev react-app-rewired customize-cra concurrently @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
+yarn add --dev react-app-rewired customize-cra concurrently prettier @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss twin.macro
 
 yarn add react-router-dom redux react-redux redux-thunk axios
 ```

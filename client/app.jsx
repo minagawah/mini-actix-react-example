@@ -17,13 +17,17 @@ const ProtectedRoute = ({ component, ...props }) => {
   return (
     <Route
       {...props}
-      component={user ? component : ({ location }) => (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: location },
-          }}
-        />)
+      component={
+        user
+          ? component
+          : ({ location }) => (
+              <Redirect
+                to={{
+                  pathname: '/login',
+                  state: { from: location },
+                }}
+              />
+            )
       }
     />
   );
@@ -37,11 +41,16 @@ const appStyle = css`
 export const App = () => (
   <div css={appStyle}>
     <Header />
-    <div id="container" css={css`height:100%`}>
-      <Route exact path='/' component={Top} />
-      <ProtectedRoute path='/articles' component={Articles} />
-      <Route path='/about' component={About} />
-      <Route path='/login' component={Login} />
+    <div
+      id="container"
+      css={css`
+        height: 100%;
+      `}
+    >
+      <Route exact path="/" component={Top} />
+      <ProtectedRoute path="/articles" component={Articles} />
+      <Route path="/about" component={About} />
+      <Route path="/login" component={Login} />
     </div>
   </div>
-)
+);

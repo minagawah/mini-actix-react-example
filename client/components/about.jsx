@@ -10,16 +10,23 @@ export const About = () => {
   useEffect(() => {
     // SERVER: "HttpOnly" is set to TRUE. Not allowed to read from client-side.
     // CLIENT: "HttpOnly" is set to FALSE. Allowed to read from client-side.
-    console.log(`[about] ${SERVER_COOKIE_NAME}: `, Cookies.get(SERVER_COOKIE_NAME));
-    console.log(`[about] ${CLIENT_COOKIE_NAME}: `, Cookies.get(CLIENT_COOKIE_NAME));
+    console.log(
+      `[about] ${SERVER_COOKIE_NAME}: `,
+      Cookies.get(SERVER_COOKIE_NAME)
+    );
+    console.log(
+      `[about] ${CLIENT_COOKIE_NAME}: `,
+      Cookies.get(CLIENT_COOKIE_NAME)
+    );
   }, []);
 
   return (
     <div id="about" css={aboutStyle}>
       <h2>About</h2>
       <div tw="text-lg">
-        This is a sample app to to integrate <code>actix-web</code> and <code>React</code>.
+        This is a sample app to to integrate <code>actix-web</code> and{' '}
+        <code>React</code>.
       </div>
     </div>
   );
-}
+};

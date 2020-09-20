@@ -16,7 +16,9 @@ export const Top = () => {
 
   return (
     <div id="top" css={topStyle}>
-      <Link to='/articles' tw="text-lg">Articles</Link>
+      <Link to="/articles" tw="text-lg">
+        Articles
+      </Link>
     </div>
   );
-}
+};

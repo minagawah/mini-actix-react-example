@@ -1,0 +1,1 @@
+web: /usr/bin/mini-actix-react-example

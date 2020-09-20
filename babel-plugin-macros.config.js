@@ -3,4 +3,4 @@ module.exports = {
     preset: 'emotion',
     config: './src/tailwind.config.js',
   },
-}
+};

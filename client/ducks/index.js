@@ -3,10 +3,5 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from './modules';
 
 export const createStore = () => {
-  return _createStore(
-    rootReducer,
-    applyMiddleware(
-      thunkMiddleware
-    )
-  );
-}
+  return _createStore(rootReducer, applyMiddleware(thunkMiddleware));
+};

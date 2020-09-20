@@ -16,29 +16,30 @@ const initialState = {
 // --------------------------------------------------------
 
 export const articleIdSelector = state => state[MOUNT].article_id;
-export const articleSelector = id => state => state[MOUNT].articles.find(p => p.id === id);
+export const articleSelector = id => state =>
+  state[MOUNT].articles.find(p => p.id === id);
 export const articleListSelector = state => state[MOUNT].articles;
 
 // --------------------------------------------------------
 // Reducers
 // --------------------------------------------------------
 
-export default function reducer (state = initialState, action = {}) {
+export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-  case FETCH_ARTICLE_LIST:
-    return state;
-  case SET_ARTICLE_LIST:
-    return {
-      ...state,
-      articles: action.payload || [],
-    };
-  case SET_ARTICLE_ID:
-    return {
-      ...state,
-      article_id: action.payload,
-    };
-  default:
-    return state;
+    case FETCH_ARTICLE_LIST:
+      return state;
+    case SET_ARTICLE_LIST:
+      return {
+        ...state,
+        articles: action.payload || [],
+      };
+    case SET_ARTICLE_ID:
+      return {
+        ...state,
+        article_id: action.payload,
+      };
+    default:
+      return state;
   }
 }
 
@@ -51,7 +52,7 @@ export const setArticleId = id => {
     type: SET_ARTICLE_ID,
     payload: id,
   };
-}
+};
 
 // --------------------------------------------------------
 // Operations
@@ -63,4 +64,4 @@ export const fetchArticleListDispatcher = () => async dispatch => {
     type: SET_ARTICLE_LIST,
     payload: articles,
   });
-}
+};

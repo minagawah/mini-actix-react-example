@@ -15,7 +15,9 @@ const headerStyle = css`
 // "!" at the end is "!important" in Tailwind CSS.
 const linkStyle = tw`no-underline ml-4 text-white! hover:text-blue-400!`;
 
-const logoutStyle = css`${linkStyle} ${tw`cursor-pointer`}`;
+const logoutStyle = css`
+  ${linkStyle} ${tw`cursor-pointer`}
+`;
 
 export const Header = () => {
   const history = useHistory();
@@ -24,17 +26,28 @@ export const Header = () => {
   const onClick = async () => {
     await logout();
     history.push('/');
-  }
+  };
 
   return (
     <header css={headerStyle}>
-      <Link to='/'>
-        <img src={logo} alt="logo" css={css`height:45px; pointer-events:none;`} />
+      <Link to="/">
+        <img
+          src={logo}
+          alt="logo"
+          css={css`
+            height: 45px;
+            pointer-events: none;
+          `}
+        />
       </Link>
-      <Link to='/about' css={linkStyle}>About</Link>
+      <Link to="/about" css={linkStyle}>
+        About
+      </Link>
       {!!user && (
-        <span css={logoutStyle} onClick={() => onClick()}>Logout</span>
+        <span css={logoutStyle} onClick={() => onClick()}>
+          Logout
+        </span>
       )}
     </header>
   );
-}
+};

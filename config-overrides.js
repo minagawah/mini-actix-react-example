@@ -8,9 +8,5 @@ module.exports = {
     paths.appBuild = path.resolve(__dirname, 'dist');
     return paths;
   },
-  webpack: override(
-    addBabelPresets(
-      '@emotion/babel-preset-css-prop'
-    )
-  ),
-}
+  webpack: override(addBabelPresets('@emotion/babel-preset-css-prop')),
+};

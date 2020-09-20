@@ -28,6 +28,6 @@ export const AuthProvider = props => {
   const auth = useMemo(() => ({ user, login, logout }), [user]);
 
   return <AuthContext.Provider value={auth} {...props} />;
-}
+};
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => useContext(AuthContext);

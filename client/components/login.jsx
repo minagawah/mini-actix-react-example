@@ -23,12 +23,10 @@ export const Login = () => {
 
   return (
     <div id="login" css={loginStyle}>
-      <div tw="mt-6 text-lg">
-        Restricted to members only. Please login.
-      </div>
+      <div tw="mt-6 text-lg">Restricted to members only. Please login.</div>
       <button onClick={onClick} css={buttonStyle} tw="mt-4">
         Login
       </button>
     </div>
   );
-}
+};

@@ -1,0 +1,11 @@
+{
+  "name": "mini-actix-react-example",
+  "description": "Rust's 'actix-web' as API server and React for client.",
+  "repository": "https://github.com/minagawah/mini-actix-react-example",
+  "success_url": "/",
+  "keywords": ["rust", "actix"],
+  "website": "https://github.com/minagawah/mini-actix-react-example",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git"
+  }
+}

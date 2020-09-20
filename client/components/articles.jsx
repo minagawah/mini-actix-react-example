@@ -23,17 +23,25 @@ export const Articles = () => {
     <div id="articles" css={articleStyle}>
       <h2>Articles</h2>
 
-      {list && list.length && list.map(item => {
-        const { id, title, body } = item;
-        return (
-          <div key={id} css={itemStyle} onClick={() => {
-            dispatch(setArticleId(id));
-          }}>
-            <div tw="font-bold">[{id}] {title}</div>
-            <div>{body}</div>
-          </div>
-        );
-      })}
+      {list &&
+        list.length &&
+        list.map(item => {
+          const { id, title, body } = item;
+          return (
+            <div
+              key={id}
+              css={itemStyle}
+              onClick={() => {
+                dispatch(setArticleId(id));
+              }}
+            >
+              <div tw="font-bold">
+                [{id}] {title}
+              </div>
+              <div>{body}</div>
+            </div>
+          );
+        })}
     </div>
   );
-}
+};
