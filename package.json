@@ -21,7 +21,7 @@
     "actix-web",
     "react"
   ],
-  "author": "Hiroki Minagawa <minagawa@tokyo800.jp>",
+  "author": "minagawah <minag@tokyo800.jp>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/minagawah/mini-actix-react-example/issues"
